@@ -1,3 +1,10 @@
+/* 
+n 個選民, m 個候選人
+候選人得到超過 n/2 的票數當選
+input 是 sorted 的 array 代表 n 個選民分別投過誰
+請問誰當選
+*/
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
