@@ -20,13 +20,11 @@ node* Merge(node* left, node* right, int n) {
     if (left != NULL && right != NULL) {
       if (left->value < right->value) {
         if (cur == NULL) head = cur = left;
-        else cur->next = left;
-        cur = cur->next;
+        else cur->next = left, cur = cur->next;
         left = left->next;
       } else {
         if (cur == NULL) head = cur = right;
-        else cur->next = right;
-        cur = cur->next;
+        else cur->next = right, cur = cur->next;
         right = right->next;
       }
     } else if (left != NULL) {
@@ -52,6 +50,7 @@ node* MergeSort(node* head, int n) {
 
   if (n >= 2) {
     cur = head;
+    prev = head;
     for (int i = 0; i < middle; i++) prev = cur, cur = cur->next;
     prev->next = NULL;
     left = MergeSort(head, middle);
@@ -63,7 +62,7 @@ node* MergeSort(node* head, int n) {
   }
 }
 
-int arr[5] = {-2, 5, 3, 1, -4};
+int arr[6] = {5, 4, 3, 2, 1, 0};
 int Count = 0;
 
 node* build() {
@@ -72,14 +71,18 @@ node* build() {
   head = NULL;
   cur = NULL;
 
-  head = new node();
-  head->next = NULL;
-  cur = head;
-  for (int i = 0; i < 5; i++) {
-    cur->value = arr[i];
-    cur->next = new node();
-    cur = cur->next;
-    cur->next = NULL;
+  for (int i = 0; i < 6; i++) {
+    if (head == NULL) {
+      head = new node();
+      head->next = NULL;
+      head->value = arr[i];
+      cur = head;
+    } else {
+      cur->next = new node();
+      cur->next->next = NULL;
+      cur->next->value = arr[i]; 
+      cur = cur->next;
+    }
     Count += 1;
   }
   return head;

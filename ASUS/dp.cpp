@@ -15,39 +15,35 @@ using namespace std;
 
 int main() {
   int arr[3] = {0};
-  int num[2];
+  int num;
+  bool flag = true;
+
   string str;
-  
+  string str_aft;
   cin >> str;
+
+  // check this string is valid
+  for (int i = 0; i < str.length() && flag; i++) {
+    if (str[i] == '0' && i == 0) flag = false;
+    else if (str[i] == '0' && (str[i-1] != '1' && str[i-1] != '2')) flag = false;
+    else if (str[i] == '0' && (str[i-1] == '1' || str[i-1] == '2')) str_aft.pop_back(), str_aft.push_back('@');
+    else str_aft.push_back(str[i]);
+  }
+
   arr[0] = 1;
-  for (int i = 0; i < str.length(); i++) {
-    if (i == 0 && arr[i] == '0') break;
-    else if (i == 0) arr[2] = 1;
-    else { 
-      num[0] = str[i] - '0';
-      num[1] = (str[i-1] - '0') * 10 + str[i] - '0';
-      if (str[i] == '0' && str[i-1] == '0') {
-        arr[2] = 0;
-        break;
-      } else if (str[i] == '0' && num[1] > 26) {
-        arr[2] = 0;
-        break;
-      } else if (str[i] == '0' && num[1] <= 26){
-        arr[2] = arr[1];
-      } else if (str[i] == '0') {
-        arr[2] = arr[0];
-      } else if (str[i-1] == '0') {
-        arr[2] = 0;
-      } else {
-        arr[2] = (arr[1] != 0) ? arr[1] : arr[0];
-        if (num[1] <= 26) arr[2] += arr[0];
-      }
+  arr[1] = 1;
+  arr[2] = 1;
+  cout << str_aft << endl;
+  for (int i = 1; i < str_aft.length() && flag; i++) {
+    if (str_aft[i] != '@' && str_aft[i-1] != '@') {
+      num = str_aft[i] - '0' + (str[i-1] - '0') * 10;
+      if (num <= 26) arr[2] += arr[0];
     }
     arr[0] = arr[1];
     arr[1] = arr[2];
-    //cout << arr[2] << endl;
+    cout << arr[0] << ' ' << arr[1] << ' ' << arr[2] << endl;
   }
-  cout << arr[2] << endl;
-
+  if (flag) cout << arr[2] << endl;
+  else cout << "No Answer" << endl;
   return 0;
 }
