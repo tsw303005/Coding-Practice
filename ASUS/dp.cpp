@@ -7,8 +7,6 @@ output: ABCD, LCD, AWD (3種可能)
 給定一串 input, output 出有幾種可能
 */
 
-// WA 程式碼
-
 #include <iostream>
 
 using namespace std;
