@@ -9,8 +9,8 @@ int main() {
     unsigned long ans = 0;
 
     cin >> n;
-    for (int i = 1; i <= n; i++) {
-        if (i % 5 == 0) ans += i / 5, cout << (i / 5) << endl;;
+    for (int i = 5; n / i >= 1; i *= 5) {
+        ans += (n / i);
     }
     cout << ans << endl;
 
