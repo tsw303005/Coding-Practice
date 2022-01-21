@@ -3,6 +3,7 @@
         "iosfwd": "cpp",
         "ios": "cpp",
         "bitset": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "unordered_set": "cpp"
     }
 }

@@ -1,31 +1,26 @@
-// Not pass
-
 #include <iostream>
-#include <unordered_map>
-
+#include <map>
+ 
 using namespace std;
-
+ 
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    unordered_map<int, int> m;
+    map<int, int> s;
     int n, t, max, left;
-
+ 
     cin >> n;
     max = 0;
     left = 0;
-
+ 
     for (int i = 1; i <= n; i++) {
         cin >> t;
-        if (m.find(t) == m.end()) m[t] = i;
-        else {
-            left = m[t];
-            m[t] = i;
+        if (s.find(t) != s.end() && s[t] > left) {
+            left = s[t];
         }
-        max = (i - left > max) ? i - left : max; 
+        s[t] = i;
+        max = (max < i - left) ? i - left : max;
     }
-
-    cout << max << endl;
-
-
+    cout << max << "\n";
+ 
     return 0;
 }
