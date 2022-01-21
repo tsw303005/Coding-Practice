@@ -1,3 +1,5 @@
+// not pass
+
 #include <iostream>
 
 using namespace std;
@@ -32,7 +34,7 @@ int main() {
 
     cur->next = head;
 
-    while (cur != NULL) {
+    while (cur->next != cur) {
         for (int i = 0; i < 2; i++) {
             prev = cur;
             cur = cur->next;
@@ -42,7 +44,12 @@ int main() {
         cout << cur->num;
 
         prev->next = cur->next;
+        delete cur;
+        cur = prev;
     }
+
+    if (flag) cout << " ";
+    cout << cur->num << endl;
 
     return 0;
 }
