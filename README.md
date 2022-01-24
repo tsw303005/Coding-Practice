@@ -1,5 +1,6 @@
 # Coding Practice Problems
-It includes all my practice programming problems in any Online Judge.
+## It includes all my practice programming problems in the following Online Judge.
 
-- I usually find some interesting programming problems here to enahce my ability.
-- If you have any problems, please feel free to contact me by email.
+- [NTHU](https://acm.cs.nthu.edu.tw/)
+- [Vjudge](https://vjudge.net/)
+- [CSES](https://cses.fi/)
